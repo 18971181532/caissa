@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caissa · 国际象棋工作台</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">♞</span>
+      <div>
+        <h1>Caissa</h1>
+        <p>零依赖的国际象棋引擎 · 位板 / α-β / UCI</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button id="btn-new" class="ghost">新局</button>
+      <button id="btn-undo" class="ghost">悔棋</button>
+      <button id="btn-flip" class="ghost">翻转</button>
+      <button id="btn-analyze" class="primary">分析</button>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <section class="board-wrap">
+      <div class="evalbar" id="evalbar">
+        <div class="evalbar-fill" id="evalfill"></div>
+        <span class="evalbar-label" id="evallabel">0.00</span>
+      </div>
+      <div class="board-shell">
+        <div class="board" id="board"></div>
+        <div class="banner" id="banner" hidden><span></span></div>
+      </div>
+    </section>
+
+    <aside class="panel">
+
+      <div class="card status">
+        <div class="status-main">
+          <span class="dot" id="turn-dot"></span>
+          <strong id="turn-text">白方走棋</strong>
+          <span class="pill" id="status-pill">进行中</span>
+        </div>
+        <div class="status-sub" id="status-sub">点击棋子，再点目标格</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">对手</div>
+        <div class="row">
+          <label class="field">
+            <span>执子</span>
+            <select id="side">
+              <option value="w">我执白</option>
+              <option value="b">我执黑</option>
+              <option value="none">只看引擎走</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>难度</span>
+            <select id="level">
+              <option value="3" data-time="0.10">1 · 入门（3 层 / 0.1s）</option>
+              <option value="4" data-time="0.20">2 · 轻松（4 层 / 0.2s）</option>
+              <option value="5" data-time="0.40" selected>3 · 普通（5 层 / 0.4s）</option>
+              <option value="6" data-time="0.90">4 · 认真（6 层 / 0.9s）</option>
+              <option value="7" data-time="1.80">5 · 困难（7 层 / 1.8s）</option>
+              <option value="8" data-time="3.50">6 · 思考（8 层 / 3.5s）</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="card grow">
+        <div class="card-title">
+          棋谱
+          <span class="hint" id="ply-count">0</span>
+        </div>
+        <div class="moves" id="moves"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          引擎思考
+          <span class="hint" id="search-summary">—</span>
+        </div>
+        <div class="lines" id="lines"><p class="placeholder">点击右上角「分析」，让引擎看看这个局面。</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">局面</div>
+        <div class="fen-row">
+          <input id="fen" spellcheck="false" autocomplete="off">
+          <button id="btn-load" class="ghost small">载入</button>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <span>只用 Python 标准库：位板走子生成 · 置换表 · 空着剪枝 · 后期着法削减</span>
+    <span id="ver">—</span>
+  </footer>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

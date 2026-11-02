@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "caissa"
+version = "1.0.0"
+description = "A zero-dependency chess engine, analysis workbench and UCI server in pure Python"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "遥か", email = "280000356+18971181532@users.noreply.github.com" },
+]
+keywords = ["chess", "chess-engine", "uci", "bitboard", "alpha-beta", "perft"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Games/Entertainment :: Board Games",
+]
+
+[project.urls]
+Homepage = "https://github.com/18971181532/caissa"
+Source = "https://github.com/18971181532/caissa"
+
+[project.scripts]
+caissa = "caissa.cli:main"
+
+[tool.setuptools]
+packages = ["caissa"]
+
+[tool.setuptools.package-data]
+caissa = []
+
+[tool.setuptools.exclude-package-data]
+caissa = ["*.pyc"]
